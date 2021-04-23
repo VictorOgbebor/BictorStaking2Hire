@@ -23,7 +23,7 @@ class Navbar extends Component {
         <a
           className="navbar-brand bgDark3 rounded border border-primary"
           target="_blank"
-          href="https://github.com/VictorOgbebor/staking_hiring_site">
+          href="https://github.com/VictorOgbebor/Bictor_Staking.git">
             Link to Github repo
         </a>
           { this.props.account

@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.5.17;
 
 interface DepositContract {
     function deposit(
@@ -64,10 +64,10 @@ contract EthStakingPool {
     constructor() public {
         owner = msg.sender;
         deadline = block.timestamp + 30 days;
-        // deadline = 1611705600; // 01/27/2021 @ 12:00am (UTC)
+        // deadline = 1611705600; // 05/15/2021 @ 12:00am (UTC)
     }
 
-    receive() external payable beforeDeadline notFinalized {
+    function receive() external payable beforeDeadline notFinalized {
         balances[msg.sender] += msg.value;
         emit EthReceived(msg.sender, msg.value);
     }
@@ -97,7 +97,7 @@ contract EthStakingPool {
         require(address(this).balance >= DEPOSIT_AMOUNT, "Error, deposit amount not reached");
         require(hasDeposited[pubkey] == false, "already deposited");
 
-        DepositContract(DEPOSIT_CONTRACT).deposit{value: DEPOSIT_AMOUNT}(
+        DepositContract(DEPOSIT_CONTRACT).deposit(
             pubkey,
             withdrawal_credentials,
             signature,
