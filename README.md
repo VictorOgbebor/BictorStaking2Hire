@@ -1,1 +1,1 @@
-# staking_hiring_site
+# Staking Hiring Dapp
